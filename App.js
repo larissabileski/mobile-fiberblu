@@ -5,10 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider as PaperProvider } from 'react-native-paper';
 
 import Home from './screens/Home';
-import Romance from './screens/Romance';
-import Terror from './screens/Terror';
-import Drama from './screens/Drama';
-import Infantil from './screens/Infantil'
+import Estoque from './screens/Estoque';
+import Clientes from './screens/Clientes';
+import Vendas from './screens/Vendas';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,10 +17,9 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Romance" component={Romance} />
-          <Stack.Screen name="Drama" component={Drama} />
-          <Stack.Screen name="Terror" component={Terror} />
-          <Stack.Screen name="Infantil" component={Infantil} />
+          <Stack.Screen name="Estoque" component={Estoque} />
+          <Stack.Screen name="Clientes" component={Clientes} />
+          <Stack.Screen name="Vendas" component={Vendas} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

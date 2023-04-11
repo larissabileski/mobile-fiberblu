@@ -3,11 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 
-export default function Infantil () {
+export default function Clientes () {
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Esta é a tela de filmes do genêro Infantil" />
+        <Card.Title title="Esta é a tela dos clientes" />
       </Card>
     </View>
   );

@@ -8,29 +8,22 @@ function Home ({navigation}) {
     <ScrollView style={styles.scrollView}>
       <Card style={styles.card}>
         <Card.Content>
-          <Button mode="contained" onPress={() => navigation.navigate('Romance')}>
-            Romance
+          <Button mode="contained" onPress={() => navigation.navigate('Estoque')}>
+            Estoque
           </Button>
         </Card.Content>
       </Card>
       <Card style={styles.card}>
         <Card.Content>
-          <Button mode="contained" onPress={() => navigation.navigate('Terror')}>
-            Terror 
+          <Button mode="contained" onPress={() => navigation.navigate('Clientes')}>
+            Clientes
           </Button>
         </Card.Content>
       </Card>
       <Card style={styles.card}>
         <Card.Content>
-          <Button mode="contained" onPress={() => navigation.navigate('Drama')}>
-            Drama
-          </Button>
-        </Card.Content>
-      </Card>
-      <Card style={styles.card}>
-        <Card.Content>
-          <Button mode="contained" onPress={() => navigation.navigate('Infantil')}>
-            Infantil
+          <Button mode="contained" onPress={() => navigation.navigate('Vendas')}>
+            Vendas
           </Button>
         </Card.Content>
       </Card>
