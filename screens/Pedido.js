@@ -1,14 +1,20 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text} from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 
-export default function Estoque () {
+export default function Pedido () {
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Estoque:" />
+        {/* <form>
+        <label><Text>Nome:</Text>
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+        </form> */}
       </Card>
+
     </View>
   );
 }
