@@ -18,12 +18,12 @@ function Home ({navigation}) {
       </Card>
       <Card style={styles.card}>
         <Card.Content>
-        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Vendas')}><Text style= {{color: '#fff', fontSize: 15}}>Vendas</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Pedidos')}><Text style= {{color: '#fff', fontSize: 15}}>Pedidos</Text></TouchableOpacity>
         </Card.Content>
       </Card>
       <Card style={styles.card}>
         <Card.Content>
-        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Pedido')}><Text style= {{color: '#fff', fontSize: 15}}>Cadastrar Novo Pedido</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><Text style= {{color: '#fff', fontSize: 15}}>Cadastrar Novo Pedido</Text></TouchableOpacity>
         </Card.Content>
       </Card>
     </ScrollView>

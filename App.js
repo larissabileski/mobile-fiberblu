@@ -7,8 +7,8 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import Home from './screens/Home';
 import Estoque from './screens/Estoque';
 import Clientes from './screens/Clientes';
-import Vendas from './screens/Vendas';
-import Pedido from './screens/Pedido';
+import Pedidos from './screens/Pedidos';
+import Cadastro from './screens/Cadastro';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,8 +20,8 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Estoque" component={Estoque} />
           <Stack.Screen name="Clientes" component={Clientes} />
-          <Stack.Screen name="Vendas" component={Vendas} />
-          <Stack.Screen name="Pedido" component={Pedido} />
+          <Stack.Screen name="Pedidos" component={Pedidos} />
+          <Stack.Screen name="Cadastro" component={Cadastro} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

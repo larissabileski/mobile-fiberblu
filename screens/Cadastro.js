@@ -3,10 +3,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
 import { Icon } from "react-native-elements";
 
+// const [text, setCliente] = React.useState("");
+
 const itens = [
   'Boleto',
   'Cheque'
 ]
+
 const Pedido = ({ label }) => {
   const [visible, setVisible] = useState(false);
 
