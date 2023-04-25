@@ -1,13 +1,13 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
 import { Icon } from "react-native-elements";
 
-interface Props {
-  label: string;
-}
-
-const Pedido: FC <Props> = ({ label }) => {
+const itens = [
+  'Boleto',
+  'Cheque'
+]
+const Pedido = ({ label }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleDropdown = () => {
@@ -17,9 +17,11 @@ const Pedido: FC <Props> = ({ label }) => {
   const renderDropdown = () => {
     if (visible) {
       return (
-        <Text style={styles.dropdown}>
-          This is where the dropdown will be rendered.
-        </Text>
+        
+        <View style={styles.dropdown}>
+          {itens.map((item) => (<Text>{item}</Text>))}
+        </View>
+        
       );
     }
   };
@@ -73,5 +75,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dropdown;
+export default Pedido;
 
