@@ -3,20 +3,9 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
 import { Icon } from "react-native-elements";
 
-// const [text, setCliente] = React.useState("");
-
-const itens = [
-  'Boleto',
-  'Cheque'
-]
-
-const Pedido = ({ label }) => {
+const Cadastro = ({ label }) => {
   const [visible, setVisible] = useState(false);
-
-  const toggleDropdown = () => {
-    setVisible(!visible);
-  };
-
+  const toggleDropdown = () => {setVisible(!visible);};
   const renderDropdown = () => {
     if (visible) {
       return (
@@ -28,7 +17,10 @@ const Pedido = ({ label }) => {
       );
     }
   };
-
+  const itens = [
+    'Boleto',
+    'Cheque'
+  ]    
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
@@ -78,5 +70,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Pedido;
+export default Cadastro;
 

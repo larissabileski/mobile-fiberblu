@@ -33,14 +33,14 @@ function Home ({navigation}) {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: DefaultTheme.colors.background,
-    paddingTop: 10
   },
   card: {
     width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
     backgroundColor: '#16a34a',
-    marginBottom: 30
+    borderWidth: 1,
+    borderColor: 'white',
   },
   TouchableOpacity: {
     alignItems: 'center',
