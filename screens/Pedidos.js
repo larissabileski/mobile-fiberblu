@@ -89,10 +89,11 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
     backgroundColor: '#16a34a',
+    alignItems: 'center'
   },
   buttonClose: {
     backgroundColor: '#16a34a',
-    width: '90%',
+    width: '100%',
     borderRadius: 10,
     marginTop: 5,
   },
@@ -106,15 +107,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
-    fontSize: 15,
+    fontSize: 17,
     textAlign: 'justify',
   },
   title: {
     fontSize: 20,
     backgroundColor: '#fb923c',
+    color: 'white',
+    paddingLeft: 5
   },
   informacao:{
-    width: '90%',
+    width: '100%',
     backgroundColor:'#fb923c'
   }
 });
