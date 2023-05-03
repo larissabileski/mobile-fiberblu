@@ -15,12 +15,23 @@ const Cadastro = () => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style = {styles.text}>Produtos:</Text>
-            <Text style = {styles.text}>Tanque x(5 uni.)</Text>
-            <Text style = {styles.text}>Tanque y(3 uni.)</Text>
-            <Text style = {styles.text}>Vendedor: Joãozinho do Bairro</Text>
-            <Text style = {styles.text}>Forma de Pagamento: Boleto</Text>
-            <Text style = {styles.text}>Valor total: R$4600,00</Text>
+            <View style= {styles.informacao}>
+              <Text style = {styles.title}>Produtos:</Text>
+            </View>
+              <Text style = {styles.text}>Tanque x(5 uni.)</Text>
+              <Text style = {styles.text}>Tanque y(3 uni.)</Text>
+            <View style= {styles.informacao}>  
+              <Text style = {styles.title}>Vendedor:</Text>
+            </View>
+              <Text style = {styles.text}>Joãozinho do Bairro</Text>
+            <View style= {styles.informacao}>  
+              <Text style = {styles.title}>Forma de Pagamento</Text>
+            </View>
+              <Text style = {styles.text}>Boleto</Text>
+            <View style= {styles.informacao}>  
+              <Text style = {styles.title}>Valor Total</Text>
+            </View>
+              <Text style = {styles.text}>R$4600,00</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -63,7 +74,7 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     padding: 35,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -83,6 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#16a34a',
     width: '90%',
     borderRadius: 10,
+    marginTop: 5,
   },
   textStyle: {
     color: 'white',
@@ -94,8 +106,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
+    fontSize: 15,
+    textAlign: 'justify',
+  },
+  title: {
     fontSize: 20,
-    textAlign: 'justify'
+    backgroundColor: '#fb923c',
+  },
+  informacao:{
+    width: '90%',
+    backgroundColor:'#fb923c'
   }
 });
 
