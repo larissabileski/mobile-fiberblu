@@ -1,31 +1,35 @@
 import React from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 function Home ({navigation}) {
   return  (
     <ScrollView style={styles.scrollView}>
-      <Card style={styles.card}>
-        <Card.Content>
-          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Estoque')}><Text style= {{color: '#fff', fontSize: 15}}>Estoque</Text></TouchableOpacity>
-        </Card.Content>
-      </Card>
-      <Card style={styles.card}>
-        <Card.Content>
-        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Clientes')}><Text style= {{color: '#fff', fontSize: 15}}>Clientes</Text></TouchableOpacity>
-        </Card.Content>
-      </Card>
-      <Card style={styles.card}>
-        <Card.Content>
-        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Pedidos')}><Text style= {{color: '#fff', fontSize: 15}}>Pedidos</Text></TouchableOpacity>
-        </Card.Content>
-      </Card>
-      <Card style={styles.card}>
-        <Card.Content>
-        <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><Text style= {{color: '#fff', fontSize: 15}}>Cadastrar Novo Pedido</Text></TouchableOpacity>
-        </Card.Content>
-      </Card>
+      <View style={styles.content}>
+        <Card style={styles.card}>
+          <Card.Content>
+            <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Estoque')}><MaterialCommunityIcons name='package' color={'white'} size={80}/></TouchableOpacity>
+          </Card.Content>
+        </Card>
+        <Card style={styles.card}>
+          <Card.Content>
+          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Clientes')}><MaterialCommunityIcons name='account' color={'white'} size={80}/></TouchableOpacity>
+          </Card.Content>
+        </Card>
+        <Card style={styles.card}>
+          <Card.Content>
+          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Pedidos')}><MaterialCommunityIcons name='note-text' color={'white'} size={80}/></TouchableOpacity>
+          </Card.Content>
+        </Card>
+        <Card style={styles.card}>
+          <Card.Content>
+          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><MaterialCommunityIcons name='plus-box-multiple' color={'white'} size={80}/></TouchableOpacity>
+          </Card.Content>
+        </Card>
+      </View>
     </ScrollView>
   )
 }
@@ -33,17 +37,29 @@ function Home ({navigation}) {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: DefaultTheme.colors.background,
+
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%'
   },
   card: {
-    width: '100%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: '45%',
+    height: 275,
+    marginHorizontal: 10,
+    marginVertical: 10,
     backgroundColor: '#16a34a',
     borderWidth: 1,
     borderColor: 'white',
+    borderRadius: 15
   },
   TouchableOpacity: {
     alignItems: 'center',
+    justifyContent: 'center',
+    height: 275,
+    width: '100%'
   }
 });
 
