@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: DefaultTheme.colors.background,
     alignItems: "center",
     paddingTop: 10,
+    marginTop: 30,
   },
   card: {
     width: "90%",
