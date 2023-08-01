@@ -29,7 +29,7 @@ function Home ({navigation}) {
           <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Pedidos')}><MaterialCommunityIcons name='note-text' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
         </Card>
-        <Card style={styles.card}>
+        <Card style={styles.cardpedido}>
           <Card.Content>
           <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><MaterialCommunityIcons name='plus-box-multiple' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
@@ -54,7 +54,17 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '45%',
-    height: 275,
+    height: 250,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    backgroundColor: '#16a34a',
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 15
+  },
+  cardpedido: {
+    width: '95%',
+    height: 250,
     marginHorizontal: 10,
     marginVertical: 10,
     backgroundColor: '#16a34a',
