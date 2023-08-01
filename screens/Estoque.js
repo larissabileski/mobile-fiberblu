@@ -7,7 +7,13 @@ export default function Estoque () {
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Estoque:" />
+        <Card.Title title="Tanque X" />
+      </Card>
+      <Card style={styles.card}>
+        <Card.Title title="Tanque y" />
+      </Card>
+      <Card style={styles.card}>
+        <Card.Title title="Cassol" />
       </Card>
     </View>
   );
@@ -23,6 +29,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   card: {
-    width: '90%'
+    width: '90%',
+    marginTop: 10,
   }
 });

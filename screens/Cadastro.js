@@ -4,26 +4,46 @@ import { Card, DefaultTheme } from "react-native-paper";
 import { Icon } from "react-native-elements";
 
 const Cadastro = ({ label }) => {
-  const [visible, setVisible] = useState(false);
-  const toggleDropdown = () => {setVisible(!visible);};
-  const renderDropdown = () => {
-    if (visible) {
+  const [visiblepagamento, setVisiblePagamento] = useState(false);
+  const togglePagamento = () => {setVisiblePagamento(!visiblepagamento);};
+  const renderPagamento = () => {
+    if (visiblepagamento) {
       return (
         <View style={styles.dropdown}>
-          {itens.map((item) => (<Text>{item}</Text>))}
+          {pagamentos.map((pagamento) => (<Text>{pagamento}</Text>))}
         </View>
       );
     }
   };
-  const itens = [
+  const pagamentos = [
     'Boleto',
     'Cheque'
+  ]
+  const [visiblecliente, setVisibleCliente] = useState(false);
+  const toggleCliente = () => {setVisibleCliente(!visiblecliente);};
+  const renderCliente = () => {
+    if (visiblecliente) {
+      return (
+        <View style={styles.dropdown}>
+          {clientes.map((cliente) => (<Text>{cliente}</Text>))}
+        </View>
+      );
+    }
+  };
+  const clientes = [
+    'Cassol',
+    'Milium'
   ]    
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
-          {renderDropdown()}
+        <TouchableOpacity style={styles.button} onPress={togglePagamento}>
+          {renderPagamento()}
+          <Text style={styles.buttonText}>{label}</Text>
+          <Icon type="font-awesome" name="chevron-down" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={toggleCliente}>
+          {renderCliente()}
           <Text style={styles.buttonText}>{label}</Text>
           <Icon type="font-awesome" name="chevron-down" />
         </TouchableOpacity>
@@ -45,6 +65,7 @@ const styles = StyleSheet.create({
     width: "90%",
   },
   button: {
+    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#efefef',
@@ -61,6 +82,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: '#fff',
     top: 50,
+    // zIndex: 0
   },
 });
 
