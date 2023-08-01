@@ -9,11 +9,9 @@ const Cadastro = ({ label }) => {
   const renderDropdown = () => {
     if (visible) {
       return (
-        
         <View style={styles.dropdown}>
           {itens.map((item) => (<Text>{item}</Text>))}
         </View>
-        
       );
     }
   };
@@ -24,11 +22,6 @@ const Cadastro = ({ label }) => {
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        {/* <TextInput
-          label="Cliente"
-          value={text}
-          onChangeText={(text) => setCliente(text)}
-        /> */}
         <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
           {renderDropdown()}
           <Text style={styles.buttonText}>{label}</Text>

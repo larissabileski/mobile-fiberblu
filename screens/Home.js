@@ -11,13 +11,17 @@ function Home ({navigation}) {
       <View style={styles.content}>
         <Card style={styles.card}>
           <Card.Content>
+          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Clientes')}><MaterialCommunityIcons name='account' color={'white'} size={80}/></TouchableOpacity>
+          </Card.Content>
+        </Card>
+        <Card style={styles.card}>
+          <Card.Content>
           <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('CadCliente')}><MaterialCommunityIcons name='account-multiple-plus' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
         </Card>
-        
         <Card style={styles.card}>
           <Card.Content>
-          <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Clientes')}><MaterialCommunityIcons name='account' color={'white'} size={80}/></TouchableOpacity>
+            <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Estoque')}><MaterialCommunityIcons name='package' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
         </Card>
         <Card style={styles.card}>
@@ -30,11 +34,7 @@ function Home ({navigation}) {
           <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><MaterialCommunityIcons name='plus-box-multiple' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
         </Card>
-        <Card style={styles.card}>
-          <Card.Content>
-            <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Estoque')}><MaterialCommunityIcons name='package' color={'white'} size={80}/></TouchableOpacity>
-          </Card.Content>
-        </Card>
+        
       </View>
     </ScrollView>
   )
