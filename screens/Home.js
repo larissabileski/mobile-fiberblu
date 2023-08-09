@@ -4,7 +4,6 @@ import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-
 function Home ({navigation}) {
   return  (
     <ScrollView style={styles.scrollView}>
