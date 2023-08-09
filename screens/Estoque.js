@@ -1,25 +1,30 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 
 export default function Estoque () {
   return (
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Tanque X" />
-      </Card>
-      <Card style={styles.card}>
-        <Card.Title title="Tanque y" />
-      </Card>
-      <Card style={styles.card}>
-        <Card.Title title="Cassol" />
+        <Card.Title title="Modelo do Tanque" />
+        <View style= {styles.informacao}>
+          <Text style = {styles.title}>Cor:</Text>
+          <Text style = {styles.title}>Valor:</Text>
+          <Text style = {styles.title}>Quantidade em estoque:</Text>
+        </View>
       </Card>
     </View>
+    </ScrollView>
+    
   );
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: DefaultTheme.colors.background,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -31,5 +36,9 @@ const styles = StyleSheet.create({
   card: {
     width: '90%',
     marginTop: 10,
-  }
+  },
+  title: {
+    marginHorizontal: 15,
+    marginBottom: 10,
+  },
 });
