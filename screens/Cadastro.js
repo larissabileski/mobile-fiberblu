@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
 import { Icon } from "react-native-elements";
 
@@ -33,26 +33,56 @@ const Cadastro = ({ label }) => {
   const clientes = [
     'Cassol',
     'Milium'
+  ]
+  const [visibleproduto, setVisibleProduto] = useState(false);
+  const toggleProduto = () => {setVisibleProduto(!visibleproduto);};
+  const renderProduto = () => {
+    if (visibleproduto) {
+      return (
+        <View style={styles.dropdown}>
+          {produtos.map((produto) => (<Text>{produto}</Text>))}
+        </View>
+      );
+    }
+  };
+  const produtos = [
+    'Tanque A -  Preto',
+    'Tanque A - Branco',
+    'Tanque A - Bege',
+    'Tanque B -  Preto',
+    'Tanque B - Branco',
+    'Tanque B - Bege',
   ]    
   return (
+    <ScrollView style={styles.scrollView}>
     <View style={styles.container}>
       <Card style={styles.card}>
-        <TouchableOpacity style={styles.button} onPress={togglePagamento}>
-          {renderPagamento()}
-          <Text style={styles.buttonText}>{label}</Text>
-          <Icon type="font-awesome" name="chevron-down" />
-        </TouchableOpacity>
+        <Card.Title title="Cadastrar Novo Pedido" />
         <TouchableOpacity style={styles.button} onPress={toggleCliente}>
           {renderCliente()}
           <Text style={styles.buttonText}>{label}</Text>
           <Icon type="font-awesome" name="chevron-down" />
         </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={toggleProduto}>
+          {renderProduto()}
+          <Text style={styles.buttonText}>{label}</Text>
+          <Icon type="font-awesome" name="chevron-down" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={togglePagamento}>
+          {renderPagamento()}
+          <Text style={styles.buttonText}>{label}</Text>
+          <Icon type="font-awesome" name="chevron-down" />
+        </TouchableOpacity>
       </Card>
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: DefaultTheme.colors.background,
+  },
   container: {
     flex: 1,
     flexDirection: "column",
@@ -63,16 +93,17 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "90%",
+    height: 1000,
   },
   button: {
     marginTop: 10,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: '#efefef',
     height: 50,
     width: '90%',
     paddingHorizontal: 10,
-    zIndex: 1,
+    zIndex: 100,
   },
   buttonText: {
     flex: 1,

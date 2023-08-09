@@ -87,10 +87,12 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   button: {
-    padding: 10,
-    elevation: 2,
-    backgroundColor: '#16a34a',
-    alignItems: 'center'
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: DefaultTheme.colors.background,
+    alignItems: 'center',
+    paddingTop: 10,
+    marginTop: 30,
   },
   buttonClose: {
     backgroundColor: '#16a34a',

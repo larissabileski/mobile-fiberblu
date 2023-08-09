@@ -34,7 +34,6 @@ function Home ({navigation}) {
           <TouchableOpacity style={styles.TouchableOpacity} onPress={() => navigation.navigate('Cadastro')}><MaterialCommunityIcons name='plus-box-multiple' color={'white'} size={80}/></TouchableOpacity>
           </Card.Content>
         </Card>
-        
       </View>
     </ScrollView>
   )
