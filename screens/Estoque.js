@@ -10,8 +10,10 @@ export default function Estoque () {
       <Card style={styles.card}>
         <Card.Title title="Modelo do Tanque" />
         <View style= {styles.informacao}>
+          <Text style = {styles.title}>Linha:</Text>
+          <Text style = {styles.title}>Material:</Text>
           <Text style = {styles.title}>Cor:</Text>
-          <Text style = {styles.title}>Valor:</Text>
+          <Text style = {styles.title}>Preço:</Text>
           <Text style = {styles.title}>Quantidade em estoque:</Text>
         </View>
       </Card>

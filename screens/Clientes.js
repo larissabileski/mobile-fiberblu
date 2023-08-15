@@ -10,6 +10,7 @@ export default function Clientes () {
       <Card style={styles.card}>
         <Card.Title title="Empresa Cliente" />
         <View style= {styles.informacao}>
+        <Text style = {styles.title}>CNPJ:</Text>
           <Text style = {styles.title}>Endereço:</Text>
           <Text style = {styles.title}>Telefone:</Text>
           <Text style = {styles.title}>Email:</Text>
