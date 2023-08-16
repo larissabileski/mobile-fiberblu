@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { MultiSelect } from 'react-native-element-dropdown';
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { Card, DefaultTheme } from "react-native-paper";
 
 const cliente = [
@@ -84,6 +83,9 @@ const MultiSelectComponent = () => {
         }}
         selectedStyle={styles.selectedStyle}
       />
+       <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Concluir Pedido</Text> 
+      </TouchableOpacity> 
       </Card>
     </View>
     </ScrollView>
@@ -128,39 +130,16 @@ const styles = StyleSheet.create({
   selectedStyle: {
     borderRadius: 12,
   },
+  button: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#15803d",
+  },
+  buttonText: {
+    color: '#fb923c'
+  }
 });
-
-
-//   const produtos = [
-//     'Tanque A -  Preto',
-//     'Tanque A - Branco',
-//     'Tanque A - Bege',
-//     'Tanque B -  Preto',
-//     'Tanque B - Branco',
-//     'Tanque B - Bege',
-//   ]    
-//   return (
-//     <ScrollView style={styles.scrollView}>
-//     <View style={styles.container}>
-//       <Card style={styles.card}>
-//         <Card.Title title="Cadastrar Novo Pedido" />
-//         <TouchableOpacity style={styles.button} onPress={toggleCliente}>
-//           {renderCliente()}
-//           <Text style={styles.buttonText}>{label}</Text>
-//           <Icon type="font-awesome" name="chevron-down" />
-//         </TouchableOpacity>
-//         <TouchableOpacity style={styles.button} onPress={toggleProduto}>
-//           {renderProduto()}
-//           <Text style={styles.buttonText}>{label}</Text>
-//           <Icon type="font-awesome" name="chevron-down" />
-//         </TouchableOpacity>
-//         <TouchableOpacity style={styles.button} onPress={togglePagamento}>
-//           {renderPagamento()}
-//           <Text style={styles.buttonText}>{label}</Text>
-//           <Icon type="font-awesome" name="chevron-down" />
-//         </TouchableOpacity>
-//       </Card>
-//     </View>
-//     </ScrollView>
-//   );
-// };

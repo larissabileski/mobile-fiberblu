@@ -1,17 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+
 export default function Login({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/logo-fiberblu-1.png')} />
@@ -42,6 +36,7 @@ export default function Login({navigation}) {
     </View> 
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
