@@ -1,83 +1,97 @@
-import React, { useState } from "react";
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { MultiSelect } from 'react-native-element-dropdown';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Card, DefaultTheme } from "react-native-paper";
-import { Icon } from "react-native-elements";
 
-const Cadastro = ({ label }) => {
-  const [visiblepagamento, setVisiblePagamento] = useState(false);
-  const togglePagamento = () => {setVisiblePagamento(!visiblepagamento);};
-  const renderPagamento = () => {
-    if (visiblepagamento) {
-      return (
-        <View style={styles.dropdown}>
-          {pagamentos.map((pagamento) => (<Text>{pagamento}</Text>))}
-        </View>
-      );
-    }
-  };
-  const pagamentos = [
-    'Boleto',
-    'Cheque'
-  ]
-  const [visiblecliente, setVisibleCliente] = useState(false);
-  const toggleCliente = () => {setVisibleCliente(!visiblecliente);};
-  const renderCliente = () => {
-    if (visiblecliente) {
-      return (
-        <View style={styles.dropdown}>
-          {clientes.map((cliente) => (<Text>{cliente}</Text>))}
-        </View>
-      );
-    }
-  };
-  const clientes = [
-    'Cassol',
-    'Milium'
-  ]
-  const [visibleproduto, setVisibleProduto] = useState(false);
-  const toggleProduto = () => {setVisibleProduto(!visibleproduto);};
-  const renderProduto = () => {
-    if (visibleproduto) {
-      return (
-        <View style={styles.dropdown}>
-          {produtos.map((produto) => (<Text>{produto}</Text>))}
-        </View>
-      );
-    }
-  };
-  const produtos = [
-    'Tanque A -  Preto',
-    'Tanque A - Branco',
-    'Tanque A - Bege',
-    'Tanque B -  Preto',
-    'Tanque B - Branco',
-    'Tanque B - Bege',
-  ]    
+const cliente = [
+  { label: 'Cassol', value: '1' },
+  { label: 'Galvan', value: '2' },
+];
+const pagamento = [
+  { label: 'Dinheiro', value: '3' },
+  { label: 'Pix', value: '4' },
+  { label: 'Boleto', value: '5' },
+  { label: 'Cartão de Crédito', value: '6' },
+  { label: 'Cartão de Débito', value: '7' },
+];
+const produtos = [
+  { label: 'Tanque A - Preto', value: '8' },
+  { label: 'Tanque A - Branco', value: '9' },
+  { label: 'Tanque A - Bege', value: '10' },
+  { label: 'Tanque B - Preto', value: '11' },
+  { label: 'Tanque B - Branco', value: '12' },
+  { label: 'Tanque B - Bege', value: '13' },
+];
+
+
+const MultiSelectComponent = () => {
+  const [selected, setSelected] = useState([]);
+
   return (
-    <ScrollView style={styles.scrollView}>
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Cadastrar Novo Pedido" />
-        <TouchableOpacity style={styles.button} onPress={toggleCliente}>
-          {renderCliente()}
-          <Text style={styles.buttonText}>{label}</Text>
-          <Icon type="font-awesome" name="chevron-down" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={toggleProduto}>
-          {renderProduto()}
-          <Text style={styles.buttonText}>{label}</Text>
-          <Icon type="font-awesome" name="chevron-down" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={togglePagamento}>
-          {renderPagamento()}
-          <Text style={styles.buttonText}>{label}</Text>
-          <Icon type="font-awesome" name="chevron-down" />
-        </TouchableOpacity>
+      <Card.Title title="Cadastrar Novo Pedido" />
+      <MultiSelect
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        search
+        data={cliente}
+        labelField="label"
+        valueField="value"
+        placeholder="Cliente"
+        searchPlaceholder="Buscar"
+        value={selected}
+        onChange={item => {
+          setSelected(item);
+        }}
+        selectedStyle={styles.selectedStyle}
+      />
+      <MultiSelect
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        search
+        data={pagamento}
+        labelField="label"
+        valueField="value"
+        placeholder="Forma de Pagamento"
+        searchPlaceholder="Buscar"
+        value={selected}
+        onChange={item => {
+          setSelected(item);
+        }}
+        selectedStyle={styles.selectedStyle}
+      />
+      <MultiSelect
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        search
+        data={produtos}
+        labelField="label"
+        valueField="value"
+        placeholder="Produtos"
+        searchPlaceholder="Buscar"
+        value={selected}
+        onChange={item => {
+          setSelected(item);
+        }}
+        selectedStyle={styles.selectedStyle}
+      />
       </Card>
     </View>
     </ScrollView>
+    
   );
 };
+
+export default MultiSelectComponent;
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -93,29 +107,60 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "90%",
-    height: 1000,
-  },
-  button: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignSelf: 'center',
-    backgroundColor: '#efefef',
-    height: 50,
-    width: '90%',
-    paddingHorizontal: 10,
-    zIndex: 100,
-  },
-  buttonText: {
-    flex: 1,
-    textAlign: 'center',
+    height: 800,
   },
   dropdown: {
-    position: 'absolute',
-    backgroundColor: '#fff',
-    top: 50,
-    // zIndex: 0
+    height: 50,
+    backgroundColor: 'transparent',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  selectedStyle: {
+    borderRadius: 12,
   },
 });
 
-export default Cadastro;
 
+//   const produtos = [
+//     'Tanque A -  Preto',
+//     'Tanque A - Branco',
+//     'Tanque A - Bege',
+//     'Tanque B -  Preto',
+//     'Tanque B - Branco',
+//     'Tanque B - Bege',
+//   ]    
+//   return (
+//     <ScrollView style={styles.scrollView}>
+//     <View style={styles.container}>
+//       <Card style={styles.card}>
+//         <Card.Title title="Cadastrar Novo Pedido" />
+//         <TouchableOpacity style={styles.button} onPress={toggleCliente}>
+//           {renderCliente()}
+//           <Text style={styles.buttonText}>{label}</Text>
+//           <Icon type="font-awesome" name="chevron-down" />
+//         </TouchableOpacity>
+//         <TouchableOpacity style={styles.button} onPress={toggleProduto}>
+//           {renderProduto()}
+//           <Text style={styles.buttonText}>{label}</Text>
+//           <Icon type="font-awesome" name="chevron-down" />
+//         </TouchableOpacity>
+//         <TouchableOpacity style={styles.button} onPress={togglePagamento}>
+//           {renderPagamento()}
+//           <Text style={styles.buttonText}>{label}</Text>
+//           <Icon type="font-awesome" name="chevron-down" />
+//         </TouchableOpacity>
+//       </Card>
+//     </View>
+//     </ScrollView>
+//   );
+// };
