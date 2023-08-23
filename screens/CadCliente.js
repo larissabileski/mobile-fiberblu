@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView, View, Text, TextInput } from "react-native";
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const CadCliente = ({ label }) => {
   const [empresa, onChangeEmpresa] = React.useState('');
@@ -19,6 +20,9 @@ const CadCliente = ({ label }) => {
         <TextInput style={styles.input} onChangeText={onChangeEndereco} placeholder="Endereço" value={endereco} keyboardType="text"/>
         <TextInput style={styles.input} onChangeText={onChangeTelefone} placeholder="Telefone" value={telefone} keyboardType="numeric"/>
         <TextInput style={styles.input} onChangeText={onChangeEmail} placeholder="Email" value={email} keyboardType="text"/>
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.loginText}>Cadastrar</Text> 
+        </TouchableOpacity> 
       </Card>
     </View>
     </ScrollView>
@@ -47,6 +51,19 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 800,
   },
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignSelf: "center",
+    justifyContent: 'center',
+    marginTop: 40,
+    backgroundColor: "#15803d",
+  },
+  loginText: {
+    color: '#fb923c',
+    textAlign: "center",
+  }
 });
 
 export default CadCliente;
