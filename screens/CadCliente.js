@@ -20,8 +20,8 @@ const CadCliente = ({ label }) => {
         <TextInput style={styles.input} onChangeText={onChangeEndereco} placeholder="Endereço" value={endereco} keyboardType="text"/>
         <TextInput style={styles.input} onChangeText={onChangeTelefone} placeholder="Telefone" value={telefone} keyboardType="numeric"/>
         <TextInput style={styles.input} onChangeText={onChangeEmail} placeholder="Email" value={email} keyboardType="text"/>
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Cadastrar</Text> 
+        <TouchableOpacity style={styles.TouchableOpacity}>
+          <Text style={styles.TextTouchableOpacity}>Cadastrar</Text> 
         </TouchableOpacity> 
       </Card>
     </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 800,
   },
-  loginBtn: {
+  TouchableOpacity: {
     width: "80%",
     borderRadius: 25,
     height: 50,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#15803d",
   },
-  loginText: {
+  TextTouchableOpacity: {
     color: '#fb923c',
     textAlign: "center",
   }

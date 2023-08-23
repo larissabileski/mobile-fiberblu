@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import { Modal, StyleSheet, Text, Pressable, View} from 'react-native';
-import { DefaultTheme } from 'react-native-paper';
+import { Modal, StyleSheet, Text, Pressable, View, ScrollView} from 'react-native';
+import { Card, DefaultTheme } from 'react-native-paper';
 
 const Cadastro = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={styles.centeredView}>
+    <ScrollView style={styles.scrollView}>
+      <Card style={styles.Card}>
+      <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -61,10 +63,16 @@ const Cadastro = () => {
         <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
       </Pressable>
     </View>
+      </Card>
+    </ScrollView>
+    
   );
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: DefaultTheme.colors.background,
+  },
   centeredView: {
     width: '100%',
     marginLeft: 'auto',

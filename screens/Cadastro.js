@@ -23,12 +23,11 @@ const produtos = [
   { label: 'Tanque B - Bege', value: '13' },
 ];
 
-
 const MultiSelectComponent = () => {
   const [selected, setSelected] = useState([]);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
       <Card style={styles.card}>
       <Card.Title title="Cadastrar Novo Pedido" />
@@ -83,9 +82,13 @@ const MultiSelectComponent = () => {
         }}
         selectedStyle={styles.selectedStyle}
       />
-       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Concluir Pedido</Text> 
-      </TouchableOpacity> 
+      <TouchableOpacity
+      style={styles.TouchableOpacity}
+      >
+        <Text
+        style={styles.TextTouchableOpacity}
+        >Cadastrar</Text> 
+      </TouchableOpacity>
       </Card>
     </View>
     </ScrollView>
@@ -119,6 +122,7 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
+    textAlign: 'justify',
   },
   selectedTextStyle: {
     fontSize: 14,
@@ -130,16 +134,17 @@ const styles = StyleSheet.create({
   selectedStyle: {
     borderRadius: 12,
   },
-  button: {
+  TouchableOpacity: {
     width: "80%",
     borderRadius: 25,
     height: 50,
-    alignItems: "center",
-    justifyContent: "center",
+    alignSelf: "center",
+    justifyContent: 'center',
     marginTop: 40,
     backgroundColor: "#15803d",
   },
-  buttonText: {
-    color: '#fb923c'
+  TextTouchableOpacity: {
+    color: '#fb923c',
+    textAlign: "center",
   }
 });

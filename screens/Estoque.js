@@ -5,12 +5,17 @@ import { DefaultTheme } from 'react-native-paper';
 
 export default function Estoque () {
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
+      <Card style={styles.cardtop}>
+        <Card.Title title="Produtos Cadastrados" />
+      </Card>
       <Card style={styles.card}>
-        <Card.Title title="Modelo do Tanque" />
+        <Card.Title title="Modelo do Produto" />
         <View style= {styles.informacao}>
           <Text style = {styles.title}>Linha:</Text>
+          <Text style = {styles.title}>Seção:</Text>
+          <Text style = {styles.title}>Categoria:</Text>
           <Text style = {styles.title}>Material:</Text>
           <Text style = {styles.title}>Cor:</Text>
           <Text style = {styles.title}>Preço:</Text>
@@ -38,6 +43,9 @@ const styles = StyleSheet.create({
   card: {
     width: '90%',
     marginTop: 10,
+  },
+  cardtop: {
+    width: '90%'
   },
   title: {
     marginHorizontal: 15,
