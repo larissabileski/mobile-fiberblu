@@ -20,20 +20,19 @@ const Cadastro = () => {
             <View style= {styles.informacao}>
               <Text style = {styles.title}>Produtos:</Text>
             </View>
-              <Text style = {styles.text}>Tanque x(5 uni.)</Text>
-              <Text style = {styles.text}>Tanque y(3 uni.)</Text>
+              <Text style = {styles.text}>Produtos listados na compra</Text>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Vendedor:</Text>
             </View>
-              <Text style = {styles.text}>Joãozinho do Bairro</Text>
+              <Text style = {styles.text}>Vendedor listado na compra</Text>
             <View style= {styles.informacao}>  
-              <Text style = {styles.title}>Forma de Pagamento</Text>
+              <Text style = {styles.title}>Pagamento:</Text>
             </View>
-              <Text style = {styles.text}>Boleto</Text>
+              <Text style = {styles.text}>Forma de pagamento listado na compra</Text>
             <View style= {styles.informacao}>  
-              <Text style = {styles.title}>Valor Total</Text>
+              <Text style = {styles.title}>Valor Total:</Text>
             </View>
-              <Text style = {styles.text}>R$4600,00</Text>
+              <Text style = {styles.text}>Valor da compra</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -60,7 +59,8 @@ const Cadastro = () => {
       <Pressable
         style={[styles.button]}
         onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
+        <Text style={styles.textStyle}>Cassol - 22/04/2023
+      </Text>
       </Pressable>
     </View>
       </Card>
@@ -92,11 +92,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    borderRadius: 15
+    borderRadius: 30,
   },
   button: {
     marginTop:10,
-    padding: 10,
+    marginHorizontal: 20,
+    padding: 20,
     elevation: 2,
     backgroundColor: '#16a34a',
     alignItems: 'center'
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   buttonClose: {
     backgroundColor: '#16a34a',
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 30,
     marginTop: 5,
   },
   textStyle: {
@@ -118,18 +119,16 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
-    textAlign: 'justify',
   },
   title: {
-    fontSize: 20,
-    backgroundColor: '#fb923c',
-    color: 'white',
-    paddingLeft: 5
+    fontSize: 18,
+    paddingLeft: 5,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   informacao:{
     width: '100%',
-    backgroundColor:'#fb923c'
-  }
+  },
 });
 
 export default Cadastro;

@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   TouchableOpacity: {
     width: "80%",
-    borderRadius: 25,
+    borderRadius: 30,
     height: 50,
     alignSelf: "center",
     justifyContent: 'center',
@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#15803d",
   },
   TextTouchableOpacity: {
-    color: '#fb923c',
-    textAlign: "center",
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   }
 });

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#16a34a',
     borderWidth: 1,
     borderColor: 'white',
-    borderRadius: 15
+    borderRadius: 30,
   },
   cardpedido: {
     width: '95%',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#16a34a',
     borderWidth: 1,
     borderColor: 'white',
-    borderRadius: 15
+    borderRadius: 30,
   },
   TouchableOpacity: {
     alignItems: 'center',
