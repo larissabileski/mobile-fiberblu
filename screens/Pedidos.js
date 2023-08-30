@@ -1,9 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Modal, StyleSheet, Text, Pressable, View, ScrollView} from 'react-native';
 import { Card, DefaultTheme } from 'react-native-paper';
+import pedidoService from '../src/services/pedidos';
 
 const Cadastro = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [pedidos, setPedidos] = useState([]);
+
+  async function fetchPedidos() {
+    const data = await pedidoService.getAllPedidos()
+    setPedidos(data)
+  }
+
+  useEffect(() => {
+    fetchPedidos()
+  }, []);
+
   return (
     <ScrollView style={styles.scrollView}>
       <Card style={styles.Card}>
@@ -20,11 +32,12 @@ const Cadastro = () => {
             <View style= {styles.informacao}>
               <Text style = {styles.title}>Produtos:</Text>
             </View>
-              <Text style = {styles.text}>Produtos listados na compra</Text>
             <View style= {styles.informacao}>  
-              <Text style = {styles.title}>Vendedor:</Text>
+              <Text style = {styles.title}>Representante:</Text> 
             </View>
-              <Text style = {styles.text}>Vendedor listado na compra</Text>
+            <Text style = {styles.text}>{pedidos.map((pedido) => (
+                 <Text key={pedido.representante}></Text>
+              ))} </Text>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Pagamento:</Text>
             </View>
@@ -41,12 +54,16 @@ const Cadastro = () => {
           </View>
         </View>
       </Modal>
-      <Pressable
-        style={[styles.button]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
-      </Pressable>
-      <Pressable
+      {pedidos.map(pedido => (
+        <Pressable
+          style={[styles.button]}
+          onPress={() => setModalVisible(true)}>
+          <Text style={styles.textStyle}>{pedido.empresa} - {pedido.data}</Text>
+        </Pressable>
+      ))}
+
+      {/* } */}
+      {/* <Pressable
         style={[styles.button]}
         onPress={() => setModalVisible(true)}>
         <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
@@ -61,7 +78,7 @@ const Cadastro = () => {
         onPress={() => setModalVisible(true)}>
         <Text style={styles.textStyle}>Cassol - 22/04/2023
       </Text>
-      </Pressable>
+      </Pressable> */}
     </View>
       </Card>
     </ScrollView>

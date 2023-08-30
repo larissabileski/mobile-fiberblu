@@ -2,8 +2,23 @@ import React from 'react';
 import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
+// import { StatusBar } from 'expo-status-bar';
+// import CategoriaEmpresaService from './src/services/categoriaempresa';
+// import EmpresaService from './src/services/empresa';
+// import { useEffect, useState } from 'react';
 
 export default function Clientes () {
+//   const [categoriaempresas, setCategoriaEmpresa] = useState([]);
+//   useEffect(async () => {
+//     const data = await CategoriaEmpresaService.getAllCategoriaEmpresa();
+//     setCategoriaEmpresa(data);
+// }, []);
+//   const [empresas, setEmpresa] = useState([]);
+//   useEffect(async () => {
+//     const data = await EmpresaService.getAllEmpresa();
+//     setEmpresa(data);
+// }, []);
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -13,10 +28,12 @@ export default function Clientes () {
       <Card style={styles.card}>
         <Card.Title title="Empresa Cliente" />
         <View style= {styles.informacao}>
-        <Text style = {styles.title}>CNPJ:</Text>
+          <Text style = {styles.title}>CNPJ:</Text>
           <Text style = {styles.title}>Endereço:</Text>
           <Text style = {styles.title}>Telefone:</Text>
           <Text style = {styles.title}>Email:</Text>
+          <Text style = {styles.title}>CategoriaEmpresa:</Text>
+          {/* {cat.map((categoriaempresas) => (<Text key={categoriaempresas.id}>{categoriaempresas.name}</Text>))} */}
         </View>
       </Card>
     </View>

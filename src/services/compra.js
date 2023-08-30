@@ -1,4 +1,4 @@
-import api from '../screens/api'
+import api from '../src/api'
 
 class CompraService {
   async getAllCompra() {
