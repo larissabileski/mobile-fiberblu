@@ -6,7 +6,12 @@ import pedidoService from '../src/services/pedidos';
 const Cadastro = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pedidos, setPedidos] = useState([]);
+  const [pedidoAtual, setPedidoAtual] = useState({})
 
+  function alteraPedidoAtual(pedido) {
+    setPedidoAtual(pedido)
+    setModalVisible(true)
+  }
   async function fetchPedidos() {
     const data = await pedidoService.getAllPedidos()
     setPedidos(data)
@@ -15,6 +20,10 @@ const Cadastro = () => {
   useEffect(() => {
     fetchPedidos()
   }, []);
+
+  function atualizar () {
+    fetchPedidos()
+  }
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -31,21 +40,19 @@ const Cadastro = () => {
           <View style={styles.modalView}>
             <View style= {styles.informacao}>
               <Text style = {styles.title}>Produtos:</Text>
+              <Text style = {styles.text}> {pedidoAtual.produtos}</Text>
             </View>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Representante:</Text> 
+              <Text style = {styles.text}>{pedidoAtual.representante}</Text>
             </View>
-            <Text style = {styles.text}>{pedidos.map((pedido) => (
-                 <Text key={pedido.representante}></Text>
-              ))} </Text>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Pagamento:</Text>
             </View>
-              <Text style = {styles.text}>Forma de pagamento listado na compra</Text>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Valor Total:</Text>
+              <Text style = {styles.text}>{pedidoAtual.valor}</Text>
             </View>
-              <Text style = {styles.text}>Valor da compra</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -57,10 +64,19 @@ const Cadastro = () => {
       {pedidos.map(pedido => (
         <Pressable
           style={[styles.button]}
-          onPress={() => setModalVisible(true)}>
+          key={pedido.id}
+          onPress={() => alteraPedidoAtual(pedido)}>
+
           <Text style={styles.textStyle}>{pedido.empresa} - {pedido.data}</Text>
         </Pressable>
       ))}
+
+      <Pressable 
+        style={[styles.button]}
+        onPress={() => atualizar()}
+      >
+        <Text>Atualizar</Text>
+      </Pressable>
 
       {/* } */}
       {/* <Pressable
