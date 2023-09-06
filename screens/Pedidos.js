@@ -75,7 +75,7 @@ const Cadastro = () => {
         style={[styles.button]}
         onPress={() => atualizar()}
       >
-        <Text>Atualizar</Text>
+        <Text style={styles.textStyle}>Atualizar</Text>
       </Pressable>
 
       {/* } */}
