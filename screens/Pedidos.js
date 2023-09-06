@@ -46,9 +46,9 @@ const Cadastro = () => {
               <Text style = {styles.title}>Representante:</Text> 
               <Text style = {styles.text}>{pedidoAtual.representante}</Text>
             </View>
-            <View style= {styles.informacao}>  
+            {/* <View style= {styles.informacao}>  
               <Text style = {styles.title}>Pagamento:</Text>
-            </View>
+            </View> */}
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Valor Total:</Text>
               <Text style = {styles.text}>{pedidoAtual.valor}</Text>
