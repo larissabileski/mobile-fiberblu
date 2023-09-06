@@ -40,7 +40,9 @@ const Cadastro = () => {
           <View style={styles.modalView}>
             <View style= {styles.informacao}>
               <Text style = {styles.title}>Produtos:</Text>
-              <Text style = {styles.text}> {pedidoAtual.produtos}</Text>
+              {pedidoAtual.produtos?.map((produto) => (
+                <Text style = {styles.text}> {produto.categoria} - {produto.grupo} - {produto.cor}</Text>
+              ))}
             </View>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Representante:</Text> 
@@ -61,13 +63,13 @@ const Cadastro = () => {
           </View>
         </View>
       </Modal>
+
       {pedidos.map(pedido => (
         <Pressable
           style={[styles.button]}
           key={pedido.id}
           onPress={() => alteraPedidoAtual(pedido)}>
-
-          <Text style={styles.textStyle}>{pedido.empresa} - {pedido.data}</Text>
+        <Text style={styles.textStyle}>{pedido.empresa} - {pedido.data}</Text>
         </Pressable>
       ))}
 
@@ -77,28 +79,9 @@ const Cadastro = () => {
       >
         <Text style={styles.textStyle}>Atualizar</Text>
       </Pressable>
-
-      {/* } */}
-      {/* <Pressable
-        style={[styles.button]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.button]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Cassol - 22/04/2023</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.button]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Cassol - 22/04/2023
-      </Text>
-      </Pressable> */}
     </View>
-      </Card>
+    </Card>
     </ScrollView>
-    
   );
 };
 
