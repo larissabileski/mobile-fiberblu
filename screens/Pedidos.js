@@ -51,7 +51,7 @@ const Cadastro = () => {
             </View> */}
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Valor Total:</Text>
-              <Text style = {styles.text}>{pedidoAtual.valor}</Text>
+              <Text style = {styles.text}>R${pedidoAtual.valor}</Text>
             </View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
