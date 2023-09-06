@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 
+
 export default function Clientes () {
   return (
     <ScrollView style={styles.scrollView}>
