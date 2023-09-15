@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: 'center',
     marginTop: 40,
-    backgroundColor: "#15803d",
+    backgroundColor: '#16a34a',
   },
   TextTouchableOpacity: {
     color: 'white',

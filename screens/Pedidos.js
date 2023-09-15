@@ -27,7 +27,6 @@ const Cadastro = () => {
 
   return (
     <ScrollView style={styles.scrollView}>
-      <Card style={styles.Card}>
       <View style={styles.centeredView}>
       <Modal
         animationType="slide"
@@ -48,9 +47,9 @@ const Cadastro = () => {
               <Text style = {styles.title}>Representante:</Text> 
               <Text style = {styles.text}>{pedidoAtual.representante}</Text>
             </View>
-            {/* <View style= {styles.informacao}>  
+            <View style= {styles.informacao}>  
               <Text style = {styles.title}>Pagamento:</Text>
-            </View> */}
+            </View>
             <View style= {styles.informacao}>  
               <Text style = {styles.title}>Valor Total:</Text>
               <Text style = {styles.text}>R${pedidoAtual.valor}</Text>
@@ -74,13 +73,13 @@ const Cadastro = () => {
       ))}
 
       <Pressable 
-        style={[styles.button]}
+        style={[styles.atualizar]}
         onPress={() => atualizar()}
       >
         <Text style={styles.textStyle}>Atualizar</Text>
       </Pressable>
+
     </View>
-    </Card>
     </ScrollView>
   );
 };
@@ -94,6 +93,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 30,
+    borderRadius: 30,
   },
   modalView: {
     margin: 20,
@@ -116,7 +116,16 @@ const styles = StyleSheet.create({
     padding: 20,
     elevation: 2,
     backgroundColor: '#16a34a',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 30,
+  },
+  atualizar: {
+    marginTop:100,
+    marginHorizontal: 100,
+    padding: 20,
+    backgroundColor: '#16a34a',
+    alignItems: 'center',
+    borderRadius: 30,
   },
   buttonClose: {
     backgroundColor: '#16a34a',
@@ -148,13 +157,3 @@ const styles = StyleSheet.create({
 });
 
 export default Cadastro;
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     flexDirection: 'column',
-//     backgroundColor: DefaultTheme.colors.background,
-//     alignItems: 'center',
-//     paddingTop: 10
-//   },
