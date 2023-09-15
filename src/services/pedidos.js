@@ -1,9 +1,9 @@
-import api from '../api/api'
+import api from "../api/api";
 
 class PedidoService {
   async getAllPedidos() {
-    const response = await api.get('/pedido/')
-    return response.data
+    const response = await api.get("/pedido/");
+    return response.data;
   }
 }
-export default new PedidoService()
+export default new PedidoService();

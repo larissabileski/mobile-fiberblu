@@ -1,32 +1,69 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const CadCliente = ({ label }) => {
-  const [empresa, onChangeEmpresa] = React.useState('');
-  const [cnpj, onChangeCNPJ] = React.useState('');
-  const [endereco, onChangeEndereco] = React.useState('');
-  const [telefone, onChangeTelefone] = React.useState('');
-  const [email, onChangeEmail] = React.useState('');
-  
+  const [empresa, onChangeEmpresa] = React.useState("");
+  const [cnpj, onChangeCNPJ] = React.useState("");
+  const [endereco, onChangeEndereco] = React.useState("");
+  const [telefone, onChangeTelefone] = React.useState("");
+  const [email, onChangeEmail] = React.useState("");
+
   return (
     <ScrollView style={styles.scrollView}>
-    <View style={styles.container}>
-      <Card style={styles.card}>
-        <Card.Title title="Cadastrar Novo Cliente" />
-        <TextInput style={styles.input} onChangeText={onChangeEmpresa} placeholder="Nome da Empresa" value={empresa} keyboardType="text"/>
-        <TextInput style={styles.input} onChangeText={onChangeCNPJ} value={cnpj} placeholder="CNPJ" keyboardType="numeric"/>
-        <TextInput style={styles.input} onChangeText={onChangeEndereco} placeholder="Endereço" value={endereco} keyboardType="text"/>
-        <TextInput style={styles.input} onChangeText={onChangeTelefone} placeholder="Telefone" value={telefone} keyboardType="numeric"/>
-        <TextInput style={styles.input} onChangeText={onChangeEmail} placeholder="Email" value={email} keyboardType="text"/>
-        <TouchableOpacity style={styles.TouchableOpacity}>
-          <Text style={styles.TextTouchableOpacity}>Cadastrar</Text> 
-        </TouchableOpacity> 
-      </Card>
-    </View>
+      <View style={styles.container}>
+        <Card style={styles.card}>
+          <Card.Title title="Cadastrar Novo Cliente" />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEmpresa}
+            placeholder="Nome da Empresa"
+            value={empresa}
+            keyboardType="text"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeCNPJ}
+            value={cnpj}
+            placeholder="CNPJ"
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEndereco}
+            placeholder="Endereço"
+            value={endereco}
+            keyboardType="text"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeTelefone}
+            placeholder="Telefone"
+            value={telefone}
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeEmail}
+            placeholder="Email"
+            value={email}
+            keyboardType="text"
+          />
+          <TouchableOpacity style={styles.TouchableOpacity}>
+            <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
+          </TouchableOpacity>
+        </Card>
+      </View>
     </ScrollView>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -57,15 +94,15 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     height: 50,
     alignSelf: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
     marginTop: 40,
     backgroundColor: "#15803d",
   },
   TextTouchableOpacity: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  }
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
 
 export default CadCliente;

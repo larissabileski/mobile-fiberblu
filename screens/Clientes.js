@@ -1,26 +1,26 @@
-import React from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
-import { Card } from 'react-native-paper';
-import { DefaultTheme } from 'react-native-paper';
+import React from "react";
+import { StyleSheet, ScrollView, Text, View } from "react-native";
+import { Card } from "react-native-paper";
+import { DefaultTheme } from "react-native-paper";
 
-export default function Clientes () {
+export default function Clientes() {
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
-      <Card style={styles.cardtop}>
-        <Card.Title title="Empresas Cadastrados" />
-      </Card>
-      <Card style={styles.card}>
-        <Card.Title title="Empresa Cliente" />
-        <View style= {styles.informacao}>
-          <Text style = {styles.title}>CNPJ:</Text>
-          <Text style = {styles.title}>Endereço:</Text>
-          <Text style = {styles.title}>Telefone:</Text>
-          <Text style = {styles.title}>Email:</Text>
-          <Text style = {styles.title}>Categoria Empresa:</Text>
-        </View>
-      </Card>
-    </View>
+        <Card style={styles.cardtop}>
+          <Card.Title title="Empresas Cadastrados" />
+        </Card>
+        <Card style={styles.card}>
+          <Card.Title title="Empresa Cliente" />
+          <View style={styles.informacao}>
+            <Text style={styles.title}>CNPJ:</Text>
+            <Text style={styles.title}>Endereço:</Text>
+            <Text style={styles.title}>Telefone:</Text>
+            <Text style={styles.title}>Email:</Text>
+            <Text style={styles.title}>Categoria Empresa:</Text>
+          </View>
+        </Card>
+      </View>
     </ScrollView>
   );
 }
@@ -31,18 +31,18 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
     backgroundColor: DefaultTheme.colors.background,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 10,
     marginTop: 30,
   },
   card: {
     marginTop: 10,
-    width: '90%'
+    width: "90%",
   },
   cardtop: {
-    width: '90%'
+    width: "90%",
   },
   title: {
     marginHorizontal: 15,
