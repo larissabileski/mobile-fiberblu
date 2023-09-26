@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Card } from "react-native-paper";
 import { DefaultTheme } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
