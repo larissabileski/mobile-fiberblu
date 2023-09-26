@@ -1,16 +1,16 @@
-import api from "../src/api";
+import api from "../api/api";
 
 class ProdutoService {
   async getAllProduto() {
-    const response = await api.get("/produtos/");
+    const response = await api.get("/produto/");
     return response.data;
   }
   async saveProduto(produto) {
-    const response = await api.post("/produtos/", produto);
+    const response = await api.post("/produto/", produto);
     return response.data;
   }
   async deleteProduto(produto) {
-    const response = await api.delete(`/produtos/${produto.id}/`);
+    const response = await api.delete(`/produto/${produto.id}/`);
     return response.data;
   }
 }

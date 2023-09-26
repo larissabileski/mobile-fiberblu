@@ -1,28 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
+import produtoService from '../src/services/produto'
 
-export default function Estoque() {
+const Estoque = () => {
+  const [produtos, setProdutos] = useState([]);
+
+  async function fetchProdutos(){
+    const data= await produtoService.getAllProduto();
+    setProdutos(data)
+  }
+
+  useEffect(() => {
+    fetchProdutos();
+  })
+
+
   return (
     <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>
-        <Card style={styles.cardtop}>
-          <Card.Title title="Produtos Cadastrados" />
-        </Card>
-        <Card style={styles.card}>
+      {produtos.map((produto) => (
+        <View style={styles.container}>
+          <Card style={styles.card}>
           <Card.Title title="Modelo do Produto" />
           <View style={styles.informacao}>
-            <Text style={styles.title}>Linha:</Text>
-            <Text style={styles.title}>Seção:</Text>
-            <Text style={styles.title}>Categoria:</Text>
-            <Text style={styles.title}>Material:</Text>
-            <Text style={styles.title}>Cor:</Text>
-            <Text style={styles.title}>Preço:</Text>
-            <Text style={styles.title}>Quantidade em estoque:</Text>
+            <Text style={styles.title}>Categoria:{produto.categoria}</Text>
+            <Text style={styles.title}>Grupo:{produto.grupo}</Text>
+            <Text style={styles.title}>Material:{produto.linha}</Text>
+            <Text style={styles.title}>Cor:{produto.cor}</Text>
+            <Text style={styles.title}>Preço:{produto.preco}</Text>
           </View>
         </Card>
-      </View>
-    </ScrollView>
+        </View>
+        
+        ))}
+      </ScrollView> 
+
   );
 }
 
@@ -50,3 +62,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+
+export default Estoque;
