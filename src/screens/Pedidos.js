@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  ScrollView,
-} from "react-native";
-import { Card, DefaultTheme } from "react-native-paper";
+import { Modal, StyleSheet, Text, Pressable, View, ScrollView } from "react-native";
+import { DefaultTheme } from "react-native-paper";
 import pedidoService from "../src/services/pedidos";
 
 const Cadastro = () => {
@@ -56,9 +49,9 @@ const Cadastro = () => {
                 <Text style={styles.title}>Representante:</Text>
                 <Text style={styles.text}>{pedidoAtual.representante}</Text>
               </View>
-              <View style={styles.informacao}>
+              {/* <View style={styles.informacao}>
                 <Text style={styles.title}>Pagamento:</Text>
-              </View>
+              </View> */}
               <View style={styles.informacao}>
                 <Text style={styles.title}>Valor Total:</Text>
                 <Text style={styles.text}>R${pedidoAtual.valor}</Text>
