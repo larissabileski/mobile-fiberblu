@@ -1,8 +1,8 @@
-import api from "../src/api";
+import api from "../api/api";
 
 class CategoriaEmpresaService {
   async getAllCategoriaEmpresa() {
-    const response = await api.get("/categoriaempresas/");
+    const response = await api.get("/categoriaempresa/");
     return response.data;
   }
   async saveCategoriaEmpresa(categoriaempresa) {

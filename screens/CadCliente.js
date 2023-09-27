@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MultiSelect } from "react-native-element-dropdown";
+import empresaService from "../src/services/empresa";
+import categoriaEmpresaService from '../src/services/categoriaempresa'
+import categoriaempresa from "../src/services/categoriaempresa";
 
-const CadCliente = ({ label }) => {
-  const [empresa, onChangeEmpresa] = React.useState("");
-  const [cnpj, onChangeCNPJ] = React.useState("");
-  const [endereco, onChangeEndereco] = React.useState("");
-  const [telefone, onChangeTelefone] = React.useState("");
-  const [email, onChangeEmail] = React.useState("");
+export default function CadCliente({navigation}){
+  const [empresa, setEmpresa] = useState({nome:''});
+  const [cnpj, setCNPJ] = useState({cnpj:''});
+  const [endereco, setEndereco] = useState({endereco:''});
+  const [telefone, setTelefone] = useState({telefone:''});
+  const [email, setEmail] = useState({email:''});
+  const [inscricao_estadual, setInscricao] = useState({inscricao_estadual:''});
+  const [classificacao_fiscal, setClassificacao] = useState({classificacao_fiscal:''});
+  const [categoria, setCategoria] = useState({categoria:''});
+
+  const [categorias, setCategorias] = useState( [])
+
+
+  async function addEmpresa(){
+    await empresaService.saveEmpresa(empresa);
+    navigation.goBack();
+  }
+
+  async function fetchCatEmpresa(){
+    const data = await categoriaEmpresaService.getAllCategoriaEmpresa();
+    setCategorias(data)
+  }
+
+  useEffect(()=> {
+    fetchCatEmpresa();
+  }, [])
+
+  // const CadCliente = () => {
+    const [selected, setSelected] = useState([]);
+
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -17,47 +44,78 @@ const CadCliente = ({ label }) => {
           <Card.Title title="Cadastrar Novo Cliente" />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeEmpresa}
+            onChangeText={(text) => setEmpresa({nome: text})}
             placeholder="Nome da Empresa"
             value={empresa}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeCNPJ}
+            onChangeText={(text) => setCNPJ({cnpj: text})}
             value={cnpj}
             placeholder="CNPJ"
             keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeEndereco}
+            onChangeText={(text) => setEndereco({endereco: text})}
             placeholder="Endereço"
             value={endereco}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeTelefone}
+            onChangeText={(text) => setTelefone({telefone: text})}
             placeholder="Telefone"
             value={telefone}
             keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeEmail}
+            onChangeText={(text) => setEmail({email: text})}
             placeholder="Email"
             value={email}
             keyboardType="text"
           />
-          <TouchableOpacity style={styles.TouchableOpacity}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setClassificacao({classificacao_fiscal: text})}
+            placeholder="Classificação Fiscal"
+            value={classificacao_fiscal}
+            keyboardType="text"
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) => setInscricao({inscricao_estadual: text})}
+            placeholder="Inscrição Estadual"
+            value={inscricao_estadual}
+            keyboardType="text"
+          />
+          <MultiSelect
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            search
+            data={categorias}
+            labelField="descricao"
+            valueField="id"
+            placeholder="Forma de Pagamento"
+            value={selected}
+            searchPlaceholder="Buscar"
+            onChange={(item) => {
+              setSelected(item);
+            }}
+            selectedStyle={styles.selectedStyle}
+          />
+          <TouchableOpacity style={styles.TouchableOpacity} onPress={()=> addEmpresa()}>
             <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
           </TouchableOpacity>
         </Card>
       </View>
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -98,4 +156,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CadCliente;

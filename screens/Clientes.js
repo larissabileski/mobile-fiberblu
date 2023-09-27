@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {StatusBar} from 'expo-status-bar'
 import { StyleSheet, ScrollView, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import { DefaultTheme } from "react-native-paper";
@@ -18,6 +19,7 @@ const Empresa = () => {
 
   return (
     <ScrollView style={styles.scrollView}>
+      <Text style={{marginTop: '10%', marginStart: '10%'}}>Empresas</Text>
       {empresas.map((empresa) => (
         <View style={styles.container}>
         <Card style={styles.card}>
