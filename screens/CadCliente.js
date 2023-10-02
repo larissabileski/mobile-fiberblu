@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
-import { MultiSelect } from "react-native-element-dropdown";
+import { Dropdown } from 'react-native-element-dropdown';
 import empresaService from "../src/services/empresa";
-import categoriaEmpresaService from '../src/services/categoriaempresa'
-import categoriaempresa from "../src/services/categoriaempresa";
+import categoriaEmpresaService from '../src/services/categoriaempresa';
 
 export default function CadCliente({navigation}){
-  const [empresa, setEmpresa] = useState({nome:''});
-  const [cnpj, setCNPJ] = useState({cnpj:''});
-  const [endereco, setEndereco] = useState({endereco:''});
-  const [telefone, setTelefone] = useState({telefone:''});
-  const [email, setEmail] = useState({email:''});
-  const [inscricao_estadual, setInscricao] = useState({inscricao_estadual:''});
-  const [classificacao_fiscal, setClassificacao] = useState({classificacao_fiscal:''});
-  const [categoria, setCategoria] = useState({categoria:''});
+  const [empresa, setEmpresa] = useState({
+    nome:'',
+    cnpj:'',
+    endereco:'',
+    telefone:'',
+    telefone:'',
+    email:'',
+    inscricao_estadual:'',
+    classificacao_fiscal:'',
+    categoria: null,
+});
+  // const [cnpj, setCNPJ] = useState({cnpj:''});
+  // const [endereco, setEndereco] = useState({endereco:''});
+  // const [telefone, setTelefone] = useState({telefone:''});
+  // const [email, setEmail] = useState({email:''});
+  // const [inscricao_estadual, setInscricao] = useState({inscricao_estadual:''});
+  // const [classificacao_fiscal, setClassificacao] = useState({classificacao_fiscal:''});
+  // const [categoria, setCategoria] = useState({categoria:''});
 
   const [categorias, setCategorias] = useState( [])
 
@@ -34,7 +43,7 @@ export default function CadCliente({navigation}){
   }, [])
 
   // const CadCliente = () => {
-    const [selected, setSelected] = useState([]);
+    // const [selected, setSelected] = useState([]);
 
 
   return (
@@ -44,54 +53,72 @@ export default function CadCliente({navigation}){
           <Card.Title title="Cadastrar Novo Cliente" />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setEmpresa({nome: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, nome: text }))
+            }
             placeholder="Nome da Empresa"
-            value={empresa}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setCNPJ({cnpj: text})}
-            value={cnpj}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, cnpj: text }))
+            }
             placeholder="CNPJ"
             keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setEndereco({endereco: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, endereco: text }))
+            }
             placeholder="Endereço"
-            value={endereco}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setTelefone({telefone: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, telefone: text }))
+            }
             placeholder="Telefone"
-            value={telefone}
             keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setEmail({email: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, email: text }))
+            }
             placeholder="Email"
-            value={email}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setClassificacao({classificacao_fiscal: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, classificacao_fiscal: text }))
+            }
             placeholder="Classificação Fiscal"
-            value={classificacao_fiscal}
             keyboardType="text"
           />
           <TextInput
             style={styles.input}
-            onChangeText={(text) => setInscricao({inscricao_estadual: text})}
+            onChangeText={(text) =>
+              setEmpresa((empresa) => ({ ...empresa, inscricao_estadual: text }))
+            }
             placeholder="Inscrição Estadual"
-            value={inscricao_estadual}
             keyboardType="text"
           />
-          <MultiSelect
+          <Dropdown
+          style={styles.dropdown}
+          data={categorias}
+          maxHeight={300}
+          labelField="descricao"
+          valueField="id"
+          value={empresa.categoria}
+          onChange={(item) => {
+            setEmpresa((empresa) => ({ ...empresa, categoria: item.id }));
+          }}
+        />
+          {/* <MultiSelect
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -104,10 +131,10 @@ export default function CadCliente({navigation}){
             value={selected}
             searchPlaceholder="Buscar"
             onChange={(item) => {
-              setSelected(item);
+              setCategoria(item);
             }}
             selectedStyle={styles.selectedStyle}
-          />
+          /> */}
           <TouchableOpacity style={styles.TouchableOpacity} onPress={()=> addEmpresa()}>
             <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
           </TouchableOpacity>
