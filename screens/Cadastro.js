@@ -1,86 +1,90 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import { MultiSelect } from "react-native-element-dropdown";
+import { Dropdown } from "react-native-element-dropdown";
 import { Card, DefaultTheme } from "react-native-paper";
+import PedidoService from '../src/services/pedidos';
+import EmpresaService from '../src/services/empresa';
+import PagamentoService from "../src/services/pagamento";
+import ProdutoService from '../src/services/produto'
 
-const cliente = [
-  { label: "Cassol", value: "1" },
-  { label: "Galvan", value: "2" },
-];
-const pagamento = [
-  { label: "Dinheiro", value: "3" },
-  { label: "Pix", value: "4" },
-  { label: "Boleto", value: "5" },
-  { label: "Cartão de Crédito", value: "6" },
-  { label: "Cartão de Débito", value: "7" },
-];
-const produtos = [
-  { label: "Tanque A - Preto", value: "8" },
-  { label: "Tanque A - Branco", value: "9" },
-  { label: "Tanque A - Bege", value: "10" },
-  { label: "Tanque B - Preto", value: "11" },
-  { label: "Tanque B - Branco", value: "12" },
-  { label: "Tanque B - Bege", value: "13" },
-];
+export default function CadPedido({navigation}){
+  const [pedido, setPedido] = useState({
+  empresa: null,
+  pagamento:null,
+  itens:null,
+})
 
-const MultiSelectComponent = () => {
-  const [selected, setSelected] = useState([]);
+  const [empresas, setEmpresa] = useState([])
+  const [pagamentos, setPagamento] = useState([])
+  const [produtos, setProduto] = useState([])
+  
+  async function addPedido(){
+    await PedidoService.savePedido(pedido);
+    navigation.goBack();
+  }
+
+  async function fetchEmpresa(){
+    const data = await EmpresaService.getAllEmpresa();
+    setEmpresa(data)
+  }
+
+  async function fetchPagamento(){
+    const data = await PagamentoService.getAllPagamento();
+    setPagamento(data)
+  }
+
+  async function fetchProduto(){
+    const data = await ProdutoService.getAllProduto();
+    setProduto(data)
+  }
+
+  useEffect(() => {
+    fetchEmpresa();
+  }, [])
+  useEffect(() => {
+    fetchPagamento();
+  }, [])
+  useEffect(() => {
+    fetchProduto();
+  }, [])
+
 
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Card style={styles.card}>
           <Card.Title title="Cadastrar Novo Pedido" />
-          <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            search
-            data={cliente}
-            labelField="label"
-            valueField="value"
-            placeholder="Cliente"
-            searchPlaceholder="Buscar"
-            value={selected}
-            onChange={(item) => {
-              setSelected(item);
-            }}
-            selectedStyle={styles.selectedStyle}
+          <Dropdown
+          style={styles.dropdown}
+          data={empresas}
+          maxHeight={300}
+          labelField="nome"
+          valueField="id"
+          value={pedido.empresa}
+          onChange={(item) => {
+            setPedido((pedido) => ({...pedido, empresa: item.id}));
+          }}
           />
-          <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            search
-            data={pagamento}
-            labelField="label"
-            valueField="value"
-            placeholder="Forma de Pagamento"
-            searchPlaceholder="Buscar"
-            value={selected}
-            onChange={(item) => {
-              setSelected(item);
-            }}
-            selectedStyle={styles.selectedStyle}
-          />
-          <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            search
-            data={produtos}
-            labelField="label"
-            valueField="value"
-            placeholder="Produtos"
-            searchPlaceholder="Buscar"
-            value={selected}
-            onChange={(item) => {
-              setSelected(item);
-            }}
-            selectedStyle={styles.selectedStyle}
+          <Dropdown
+          style={styles.dropdown}
+          data={pagamentos}
+          maxHeight={300}
+          labelField="descricao"
+          valueField="id"
+          value={pedido.pagamento}
+          onChange={(item) => {
+            setPedido((pedido) => ({...pedido, pagamento: item.id}));
+          }}
+          /><Dropdown
+          style={styles.dropdown}
+          data={produtos}
+          maxHeight={300}
+          labelField="categoria"
+          valueField="id"
+          value={pedido.itens}
+          onChange={(item) => {
+            setPedido((pedido) => ({...pedido, itens: item.id}));
+          }}
           />
           <TouchableOpacity style={styles.TouchableOpacity}>
             <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
@@ -91,7 +95,6 @@ const MultiSelectComponent = () => {
   );
 };
 
-export default MultiSelectComponent;
 
 const styles = StyleSheet.create({
   scrollView: {
