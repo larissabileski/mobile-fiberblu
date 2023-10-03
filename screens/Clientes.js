@@ -15,7 +15,7 @@ const Empresa = () => {
 
   useEffect(() => { 
     fetchEmpresas();
-})
+}, [])
 
   return (
     <ScrollView style={styles.scrollView}>

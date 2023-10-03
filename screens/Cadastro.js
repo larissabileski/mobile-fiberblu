@@ -1,53 +1,64 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import { Card, DefaultTheme } from "react-native-paper";
-import PedidoService from '../src/services/pedidos';
-import EmpresaService from '../src/services/empresa';
+import PedidoService from "../src/services/pedidos";
+import EmpresaService from "../src/services/empresa";
 import PagamentoService from "../src/services/pagamento";
-import ProdutoService from '../src/services/produto'
+import ProdutoService from "../src/services/produto";
 
-export default function CadPedido({navigation}){
+export default function CadPedido({ navigation }) {
   const [pedido, setPedido] = useState({
-  empresa: null,
-  pagamento:null,
-  itens:null,
-})
+    empresa: null,
+    pagamento: null,
+    itens: null,
+  });
 
-  const [empresas, setEmpresa] = useState([])
-  const [pagamentos, setPagamento] = useState([])
-  const [produtos, setProduto] = useState([])
-  
-  async function addPedido(){
+  const [empresas, setEmpresa] = useState([]);
+  const [pagamentos, setPagamento] = useState([]);
+  const [produtos, setProduto] = useState([]);
+
+  async function addPedido() {
     await PedidoService.savePedido(pedido);
     navigation.goBack();
   }
 
-  async function fetchEmpresa(){
+  async function fetchEmpresa() {
     const data = await EmpresaService.getAllEmpresa();
-    setEmpresa(data)
+    setEmpresa(data);
   }
 
-  async function fetchPagamento(){
+  async function fetchPagamento() {
     const data = await PagamentoService.getAllPagamento();
-    setPagamento(data)
+    setPagamento(data);
   }
 
-  async function fetchProduto(){
+  async function fetchProduto() {
     const data = await ProdutoService.getAllProduto();
-    setProduto(data)
+    const dataProdutos = data.map(obj => ({...obj, display: `${obj.categoria} - ${obj.linha} - ${obj.cor} - ${obj.volume}L`}))
+    setProduto(dataProdutos);
+  }
+
+  async function fetchData() {
+    await fetchEmpresa();
+    await fetchProduto();
+    await fetchPagamento();
   }
 
   useEffect(() => {
-    fetchEmpresa();
-  }, [])
-  useEffect(() => {
-    fetchPagamento();
-  }, [])
-  useEffect(() => {
-    fetchProduto();
-  }, [])
-
+    fetchData()
+  }, []);
+  // useEffect(() => {
+  //   fetchPagamento();
+  // }, [])
+  // useEffect(() => {
+  // }, [])
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -55,15 +66,15 @@ export default function CadPedido({navigation}){
         <Card style={styles.card}>
           <Card.Title title="Cadastrar Novo Pedido" />
           <Dropdown
-          style={styles.dropdown}
-          data={empresas}
-          maxHeight={300}
-          labelField="nome"
-          valueField="id"
-          value={pedido.empresa}
-          onChange={(item) => {
-            setPedido((pedido) => ({...pedido, empresa: item.id}));
-          }}
+            style={styles.dropdown}
+            data={empresas}
+            maxHeight={300}
+            labelField="nome"
+            valueField="id"
+            value={pedido.empresa}
+            onChange={(item) => {
+              setPedido((pedido) => ({ ...pedido, empresa: item.id }));
+            }}
           />
           <Dropdown
           style={styles.dropdown}
@@ -75,16 +86,17 @@ export default function CadPedido({navigation}){
           onChange={(item) => {
             setPedido((pedido) => ({...pedido, pagamento: item.id}));
           }}
-          /><Dropdown
-          style={styles.dropdown}
-          data={produtos}
-          maxHeight={300}
-          labelField="categoria"
-          valueField="id"
-          value={pedido.itens}
-          onChange={(item) => {
-            setPedido((pedido) => ({...pedido, itens: item.id}));
-          }}
+          />
+          <Dropdown
+            style={styles.dropdown}
+            data={produtos}
+            maxHeight={300}
+            labelField="display"
+            valueField="id"
+            value={pedido.itens}
+            onChange={(item) => {
+              setPedido((pedido) => ({ ...pedido, itens: item.id }));
+            }}
           />
           <TouchableOpacity style={styles.TouchableOpacity}>
             <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
@@ -93,8 +105,7 @@ export default function CadPedido({navigation}){
       </View>
     </ScrollView>
   );
-};
-
+}
 
 const styles = StyleSheet.create({
   scrollView: {
