@@ -9,9 +9,9 @@ import {
 import { Dropdown } from "react-native-element-dropdown";
 import { Card, DefaultTheme } from "react-native-paper";
 import PedidoService from "../src/services/pedidos";
-import EmpresaService from "../src/services/empresa";
+import ClienteService from "../src/services/clientes";
 import PagamentoService from "../src/services/pagamento";
-import ProdutoService from "../src/services/produto";
+import EstoqueService from "../src/services/estoque";
 
 export default function CadPedido({ navigation }) {
   const [pedido, setPedido] = useState({
@@ -30,7 +30,7 @@ export default function CadPedido({ navigation }) {
   }
 
   async function fetchEmpresa() {
-    const data = await EmpresaService.getAllEmpresa();
+    const data = await ClienteService.getAllClientes();
     setEmpresa(data);
   }
 
@@ -40,7 +40,7 @@ export default function CadPedido({ navigation }) {
   }
 
   async function fetchProduto() {
-    const data = await ProdutoService.getAllProduto();
+    const data = await EstoqueService.getAllProdutos();
     const dataProdutos = data.map(obj => ({...obj, display: `${obj.categoria} - ${obj.linha} - ${obj.cor} - ${obj.volume}L`}))
     setProduto(dataProdutos);
   }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, StyleSheet, Text, Pressable, View, ScrollView } from "react-native";
 import { DefaultTheme } from "react-native-paper";
-import pedidoService from "../src/services/pedidos";
+import PedidoService from "../src/services/pedidos";
 
 const Cadastro = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -13,7 +13,7 @@ const Cadastro = () => {
     setModalVisible(true);
   }
   async function fetchPedidos() {
-    const data = await pedidoService.getAllPedidos();
+    const data = await PedidoService.getAllPedidos();
     setPedidos(data);
   }
   useEffect(() => {
@@ -45,13 +45,6 @@ const Cadastro = () => {
                   </Text>
                 ))}
               </View>
-              <View style={styles.informacao}>
-                <Text style={styles.title}>Representante:</Text>
-                <Text style={styles.text}>{pedidoAtual.representante}</Text>
-              </View>
-              {/* <View style={styles.informacao}>
-                <Text style={styles.title}>Pagamento:</Text>
-              </View> */}
               <View style={styles.informacao}>
                 <Text style={styles.title}>Valor Total:</Text>
                 <Text style={styles.text}>R${pedidoAtual.valor}</Text>

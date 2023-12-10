@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
-import produtoService from '../src/services/produto'
+import EstoqueService from '../src/services/estoque'
 
 const Estoque = () => {
   const [produtos, setProdutos] = useState([]);
 
   async function fetchProdutos(){
-    const data= await produtoService.getAllProduto();
+    const data= await EstoqueService.getAllProdutos();
     setProdutos(data)
   }
 

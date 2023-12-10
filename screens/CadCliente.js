@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Card, DefaultTheme } from "react-native-paper";
 import { Dropdown } from 'react-native-element-dropdown';
-import empresaService from "../src/services/empresa";
+import ClienteService from "../src/services/clientes";
 import categoriaEmpresaService from '../src/services/categoriaempresa';
 
 export default function CadCliente({navigation}){
@@ -29,7 +29,7 @@ export default function CadCliente({navigation}){
 
 
   async function addEmpresa(){
-    await empresaService.saveEmpresa(empresa);
+    await ClienteService.saveCliente(empresa);
     navigation.goBack();
   }
 

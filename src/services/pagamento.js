@@ -1,10 +1,9 @@
 import api from "../api/api";
 
 class PagamentoService {
-  async getAllPagamento() {
-    const response = await api.get("/pagamento/");
+  async getAllPagamentos() {
+    const response = await api.get("/pagamentos/");
     return response.data;
   }
 }
-
 export default new PagamentoService();

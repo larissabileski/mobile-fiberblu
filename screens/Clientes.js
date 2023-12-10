@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import {StatusBar} from 'expo-status-bar'
 import { StyleSheet, ScrollView, Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import { DefaultTheme } from "react-native-paper";
-import empresaService from '../src/services/empresa';
+import ClienteService from '../src/services/clientes';
 
 const Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
 
   async function fetchEmpresas(){
-    const data = await empresaService.getAllEmpresa();
+    const data = await ClienteService.getAllClientes();
     setEmpresas(data)
 }
 
