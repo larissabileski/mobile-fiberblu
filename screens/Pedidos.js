@@ -1,154 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { Modal, StyleSheet, Text, Pressable, View, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, ScrollView, Text, View } from "react-native";
+import { Card } from "react-native-paper";
 import { DefaultTheme } from "react-native-paper";
-import PedidoService from "../src/services/pedidos";
+import PedidoService from '../src/services/pedidos';
 
-const Cadastro = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+const Pedidos = () => {
   const [pedidos, setPedidos] = useState([]);
-  const [pedidoAtual, setPedidoAtual] = useState({});
 
-  function alteraPedidoAtual(pedido) {
-    setPedidoAtual(pedido);
-    setModalVisible(true);
-  }
-  async function fetchPedidos() {
+  async function fetchPedidos(){
     const data = await PedidoService.getAllPedidos();
-    setPedidos(data);
-  }
-  useEffect(() => {
+    setPedidos(data)
+}
+
+  useEffect(() => { 
     fetchPedidos();
-  }, []);
-  function atualizar() {
-    fetchPedidos();
-  }
+}, [])
 
   return (
     <ScrollView style={styles.scrollView}>
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={styles.informacao}>
-                <Text style={styles.title}>Produtos:</Text>
-                {pedidoAtual.produtos?.map((produto) => (
-                  <Text style={styles.text}>
-                    {" "}
-                    {produto.categoria} - {produto.grupo} - {produto.cor}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.informacao}>
-                <Text style={styles.title}>Valor Total:</Text>
-                <Text style={styles.text}>R${pedidoAtual.valor}</Text>
-              </View>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Fechar</Text>
-              </Pressable>
-            </View>
+      <Text style={{marginTop: '10%', marginStart: '10%'}}>Produtos</Text>
+      {pedidos.map((pedido) => (
+        <View style={styles.container}>
+        <Card style={styles.card}>
+          <Card.Title title={pedido.empresa.nome} />
+          <View style={styles.informacao}>
+            <Text style={styles.title}>Pagamento:{pedido.pagamento.descricao}</Text>
+            <Text style={styles.title}>Data:{pedido.data}</Text>
+            <Text style={styles.title}>Data do pagamento:{pedido.dataPagamento}</Text>
           </View>
-        </Modal>
-
-        {pedidos.map((pedido) => (
-          <Pressable
-            style={[styles.button]}
-            key={pedido.id}
-            onPress={() => alteraPedidoAtual(pedido)}
-          >
-            <Text style={styles.textStyle}>
-              {pedido.empresa} - {pedido.data}
-            </Text>
-          </Pressable>
-        ))}
-
-        <Pressable style={[styles.atualizar]} onPress={() => atualizar()}>
-          <Text style={styles.textStyle}>Atualizar</Text>
-        </Pressable>
+        </Card>
       </View>
+      ))}
+  
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: DefaultTheme.colors.background,
   },
-  centeredView: {
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: DefaultTheme.colors.background,
+    alignItems: "center",
+    paddingTop: 10,
     marginTop: 30,
-    borderRadius: 30,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    padding: 35,
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    borderRadius: 30,
-  },
-  button: {
+  card: {
     marginTop: 10,
-    marginHorizontal: 20,
-    padding: 20,
-    elevation: 2,
-    backgroundColor: "#16a34a",
-    alignItems: "center",
-    borderRadius: 30,
+    width: "90%",
   },
-  atualizar: {
-    marginTop: 100,
-    marginHorizontal: 100,
-    padding: 20,
-    backgroundColor: "#16a34a",
-    alignItems: "center",
-    borderRadius: 30,
-  },
-  buttonClose: {
-    backgroundColor: "#16a34a",
-    width: "100%",
-    borderRadius: 30,
-    marginTop: 5,
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  text: {
-    fontSize: 17,
+  cardtop: {
+    width: "90%",
+    
   },
   title: {
-    fontSize: 18,
-    paddingLeft: 5,
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-  informacao: {
-    width: "100%",
+    marginHorizontal: 15,
+    marginBottom: 10,
   },
 });
 
-export default Cadastro;
+
+export default Pedidos;
