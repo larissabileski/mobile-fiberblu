@@ -18,7 +18,7 @@ const Pedidos = () => {
 
   return (
     <ScrollView style={styles.scrollView}>
-      <Text style={{marginTop: '10%', marginStart: '10%'}}>Produtos</Text>
+      <Text style={{marginTop: '10%', marginStart: '10%'}}>Pedidos</Text>
       {pedidos.map((pedido) => (
         <View style={styles.container}>
         <Card style={styles.card}>
@@ -27,6 +27,7 @@ const Pedidos = () => {
             <Text style={styles.title}>Pagamento:{pedido.pagamento.descricao}</Text>
             <Text style={styles.title}>Data:{pedido.data}</Text>
             <Text style={styles.title}>Data do pagamento:{pedido.dataPagamento}</Text>
+            <Text style={styles.title}>Valor:{pedido.valor}</Text>
           </View>
         </Card>
       </View>

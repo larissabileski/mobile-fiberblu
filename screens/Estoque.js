@@ -27,6 +27,7 @@ const Estoque = () => {
             <Text style={styles.title}>Cor:{produto.cor}</Text>
             <Text style={styles.title}>Linha:{produto.linha.descricao}</Text>
             <Text style={styles.title}>Grupo:{produto.grupo.descricao}</Text>
+            <Text style={styles.title}>Preço:{produto.preco}</Text>
           </View>
         </Card>
       </View>

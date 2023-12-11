@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, View, Text, TouchableOpacity, TextInput } from 
 import { Card, DefaultTheme } from "react-native-paper";
 import { Dropdown } from 'react-native-element-dropdown';
 import ClienteService from "../src/services/clientes";
-import categoriaEmpresaService from '../src/services/categoriaempresa';
+import CategoriaEmpresaService from '../src/services/categoriaempresa';
 
 export default function CadCliente({navigation}){
   const [empresa, setEmpresa] = useState({
@@ -17,13 +17,6 @@ export default function CadCliente({navigation}){
     classificacao_fiscal:'',
     categoria: null,
 });
-  // const [cnpj, setCNPJ] = useState({cnpj:''});
-  // const [endereco, setEndereco] = useState({endereco:''});
-  // const [telefone, setTelefone] = useState({telefone:''});
-  // const [email, setEmail] = useState({email:''});
-  // const [inscricao_estadual, setInscricao] = useState({inscricao_estadual:''});
-  // const [classificacao_fiscal, setClassificacao] = useState({classificacao_fiscal:''});
-  // const [categoria, setCategoria] = useState({categoria:''});
 
   const [categorias, setCategorias] = useState( [])
 
@@ -34,7 +27,7 @@ export default function CadCliente({navigation}){
   }
 
   async function fetchCatEmpresa(){
-    const data = await categoriaEmpresaService.getAllCategoriaEmpresa();
+    const data = await CategoriaEmpresaService.getAllCategoriaEmpresas();
     setCategorias(data)
   }
 
@@ -42,8 +35,6 @@ export default function CadCliente({navigation}){
     fetchCatEmpresa();
   }, [])
 
-  // const CadCliente = () => {
-    // const [selected, setSelected] = useState([]);
 
 
   return (
@@ -118,23 +109,6 @@ export default function CadCliente({navigation}){
             setEmpresa((empresa) => ({ ...empresa, categoria: item.id }));
           }}
         />
-          {/* <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            search
-            data={categorias}
-            labelField="descricao"
-            valueField="id"
-            placeholder="Forma de Pagamento"
-            value={selected}
-            searchPlaceholder="Buscar"
-            onChange={(item) => {
-              setCategoria(item);
-            }}
-            selectedStyle={styles.selectedStyle}
-          /> */}
           <TouchableOpacity style={styles.TouchableOpacity} onPress={()=> addEmpresa()}>
             <Text style={styles.TextTouchableOpacity}>Cadastrar</Text>
           </TouchableOpacity>
@@ -149,6 +123,13 @@ const styles = StyleSheet.create({
     backgroundColor: DefaultTheme.colors.background,
   },
   input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 30,
+  },
+  dropdown:{
     height: 40,
     margin: 12,
     borderWidth: 1,
