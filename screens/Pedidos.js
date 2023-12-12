@@ -27,7 +27,7 @@ const Pedidos = () => {
             <Text style={styles.title}>Pagamento:{pedido.pagamento.descricao}</Text>
             <Text style={styles.title}>Data:{pedido.data}</Text>
             <Text style={styles.title}>Data do pagamento:{pedido.dataPagamento}</Text>
-            <Text style={styles.title}>Valor:{pedido.valor}</Text>
+            <Text style={styles.title}>Valor:R${pedido.valor}</Text>
           </View>
         </Card>
       </View>

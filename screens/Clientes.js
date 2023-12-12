@@ -28,7 +28,7 @@ const Empresa = () => {
             <Text style={styles.title}>Endereço:{empresa.endereco}</Text>
             <Text style={styles.title}>Telefone:{empresa.telefone}</Text>
             <Text style={styles.title}>Email:{empresa.email}</Text>
-            <Text style={styles.title}>Categoria Empresa:{empresa.categoria}</Text>
+            <Text style={styles.title}>Categoria Empresa:{empresa.categoria.descricao}</Text>
           </View>
         </Card>
       </View>

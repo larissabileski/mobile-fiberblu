@@ -56,7 +56,7 @@ export default function CadCliente({navigation}){
               setEmpresa((empresa) => ({ ...empresa, cnpj: text }))
             }
             placeholder="CNPJ"
-            keyboardType="numeric"
+            keyboardType="text"
           />
           <TextInput
             style={styles.input}

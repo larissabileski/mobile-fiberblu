@@ -22,7 +22,7 @@ const Estoque = () => {
       {produtos.map((produto) => (
         <View style={styles.container}>
         <Card style={styles.card}>
-          <Card.Title title={produto.grupo.descricao} />
+          <Card.Title title={produto.categoria.descricao} />
           <View style={styles.informacao}>
             <Text style={styles.title}>Cor:{produto.cor}</Text>
             <Text style={styles.title}>Linha:{produto.linha.descricao}</Text>
